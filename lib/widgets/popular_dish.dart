@@ -9,7 +9,7 @@ class PopularDish extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mealItem = Provider.of<MealItemsProvider>(context, listen: false);
-    final cat = mealItem.showCategory('c1');
+    // print(mealItem.categoryProperties('m1'));
     return SizedBox(
       height: 230,
       child: ListView.builder(
@@ -65,18 +65,16 @@ class PopularDish extends StatelessWidget {
                               '${mealItem.popularItems[i].price} tk',
                               style: const TextStyle(fontSize: 17),
                             ),
-                            Container(
-                              // height: 30,
-                              decoration: BoxDecoration(
-                                  // color: mealItem.popularItems[i].category.map((i) => null),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(mealItem.popularItems[i].category
-                                    .map((cat) => cat)
-                                    .toString()),
-                              ),
-                            )
+                            // Container(
+                            //   // height: 30,
+                            //   decoration: BoxDecoration(
+                            //       // color: mealItem.popularItems[i].category.map((i) => null),
+                            //       borderRadius: BorderRadius.circular(10)),
+                            //   child: Padding(
+                            //     padding: const EdgeInsets.all(8.0),
+                            //     child: Text(mealItem.categoryProperties(mealItem.popularItems[i])[0].toString()),
+                            //   ),
+                            // )
                           ],
                         )
                       ],

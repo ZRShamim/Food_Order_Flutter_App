@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_order_app/providers/cart_providers.dart';
+import 'package:food_order_app/providers/order_provider.dart';
+import 'package:food_order_app/theme/colors.dart';
 import 'package:food_order_app/widgets/cart_item.dart';
 import 'package:provider/provider.dart';
 
@@ -9,9 +11,29 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
+    final order = Provider.of<OrdersProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Orders'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              if (cart.totalAmount > 0) {
+                order.addOrder(cart.items.values.toList(), cart.totalAmount);
+                  cart.clear();
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Add minimum one item to cart')));
+              }
+              },
+              child: const Text('Order Now',
+                style: TextStyle(
+                  color: white,
+                  fontSize: 20
+                ),
+              )
+          )
+        ],
       ),
       body: Column(
         children: [

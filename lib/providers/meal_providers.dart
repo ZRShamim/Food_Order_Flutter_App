@@ -202,4 +202,7 @@ class MealItemsProvider with ChangeNotifier {
     }
     return items.where((meal) => meal.category.contains(catId)).toList();
   }
+
+  
+  
 }
